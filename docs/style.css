@@ -4,22 +4,78 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 300%;
-  /* margin-bottom: -100px; */
+  font-size: 350%;
+  text-shadow: 0 0 8px rgba(119,248,255,0.2);
 }
 
-container {
-  color: pink;
+@keyframes gentleFloat {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+  50% { transform: translate(-50%, -50%) translateY(-10px); }
+}
+
+.container {
+  color: #00656b;
   width: 100%;
-  length: 50%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 body {
-  /* background-image: linear-gradient(black, #00f1ff); */
-  /* background-image: linear-gradient( #77f9ff, #000000); */
-  background: rgb(2,0,36);
-background: linear-gradient(0deg, rgba(2,0,36,1) 18%, rgba(11,130,207,100) 53%, rgba(119,248,255,1) 100%);
+  /* Enhanced underwater background with subtle animation */
+  background: linear-gradient(180deg, 
+    rgba(2,0,36,1) 0%, 
+    rgba(9,41,84,1) 20%, 
+    rgba(11,130,207,1) 60%, 
+    rgba(119,248,255,1) 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+/* Bubble styling for dynamically generated bubbles */
+.bubble {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(119,248,255,0.6), rgba(119,248,255,0.2));
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bubble.small {
+  width: 2px;
+  height: 2px;
+  background: radial-gradient(circle, rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+}
+
+.bubble.large {
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, rgba(119,248,255,0.5), rgba(119,248,255,0.1));
+}
+
+@keyframes bubbleRise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) translateX(0) scale(0.5);
   }
+  10% {
+    opacity: 1;
+    transform: translateY(-10vh) translateX(0) scale(1);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh) translateX(var(--drift)) scale(1.2);
+  }
+}
+
 
   
 .background {
@@ -32,22 +88,23 @@ background: linear-gradient(0deg, rgba(2,0,36,1) 18%, rgba(11,130,207,100) 53%, 
   text-align: center;
   position: absolute;
   left: 50%;
-  margin-left: -55px;
-  top: 220px;
-/*   transform: translate(-50%, -50%);
-} */
+  transform: translateX(-50%);
+  top: 120px;
+  font-size: 180%;
+  text-shadow: 0 0 6px rgba(119,248,255,0.15);
 }
 
 
 #canvasHolder {
   width:100%;
-  height: 300px;
+  height: 220px;
 }
 
 
 .topText {
   color:#00656b;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  filter: drop-shadow(0 0 3px rgba(119,248,255,0.15));
 }
 
 .project {
@@ -64,13 +121,28 @@ background: linear-gradient(0deg, rgba(2,0,36,1) 18%, rgba(11,130,207,100) 53%, 
 
 .projectText {
   color: #00656b;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-shadow: 0 1px 3px rgba(119,248,255,0.2);
+  transition: all 0.3s ease;
+}
+
+.projectText a {
+  color: #007f8a;
+  text-decoration: none;
+  border-bottom: 1px dotted #007f8a;
+  transition: all 0.3s ease;
+}
+
+.projectText a:hover {
+  color: #00a8b5;
+  border-bottom: 1px solid #00a8b5;
+  text-shadow: 0 0 8px rgba(0,168,181,0.4);
 } 
 
  /* Style the button that is used to open and close the collapsible content */
 .button {
-  background-color: #defdff;
-  color:  #00656b;
+  background: linear-gradient(135deg, #defdff 0%, #b3f0f5 100%);
+  color: #00656b;
   cursor: pointer;
   padding: 18px;
   border: none;
@@ -78,19 +150,55 @@ background: linear-gradient(0deg, rgba(2,0,36,1) 18%, rgba(11,130,207,100) 53%, 
   outline: none;
   font-size: 15px;
   display: flex;
+  border-radius: 15px;
+  box-shadow: 
+    0 4px 15px rgba(119,248,255,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(119,248,255,0.3);
 }
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+/* Enhanced hover and active states with underwater bubble effect */
 .active, .button:hover {
-  background-color: #a9e6eb;
+  background: linear-gradient(135deg, #a9e6eb 0%, #7dd3da 100%);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 25px rgba(119,248,255,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.6),
+    0 0 20px rgba(119,248,255,0.2);
 }
 
-/* Style the collapsible content. Note: hidden by default */
+.button:active {
+  transform: translateY(0px);
+  box-shadow: 
+    0 2px 10px rgba(119,248,255,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
+/* Enhanced underwater content styling */
 .content {
   padding: 18px;
   display: none;
   overflow: hidden;
-  background-color: #defdff;
+  background: linear-gradient(135deg, #defdff 0%, #f0fdff 100%);
+  border-radius: 15px;
+  border: 1px solid rgba(119,248,255,0.3);
+  box-shadow: inset 0 2px 5px rgba(119,248,255,0.1);
+  backdrop-filter: blur(3px);
+  animation: contentRipple 0.5s ease-out;
+  margin-top: 5px;
+}
+
+@keyframes contentRipple {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 } 
 
 .headingContainter {
@@ -103,6 +211,18 @@ background: linear-gradient(0deg, rgba(2,0,36,1) 18%, rgba(11,130,207,100) 53%, 
   flex-direction: row;
   align-items: stretch;
   position: relative;
+  margin-bottom: 30px;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
+  animation: projectFloat 8s ease-in-out infinite;
+}
+
+.openableProject:nth-child(even) {
+  animation-delay: -4s;
+}
+
+@keyframes projectFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
 }
 
 .right {
@@ -110,19 +230,29 @@ background: linear-gradient(0deg, rgba(2,0,36,1) 18%, rgba(11,130,207,100) 53%, 
 }
 
 .lineLeftRight {
-  width:60%;  
+  width: 60%;
   margin-left: auto;
   margin-right: auto;
   display: block;
+  filter: drop-shadow(0 2px 8px rgba(119,248,255,0.3));
+  animation: seaweedSway 12s ease-in-out infinite;
+}
+
+@keyframes seaweedSway {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(1deg); }
+  75% { transform: rotate(-1deg); }
 }
 
 .lineRightLeft {
-  width:60%;  
+  width: 60%;
   margin-left: auto;
   margin-right: auto;
   display: block;
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
+  filter: drop-shadow(0 2px 8px rgba(119,248,255,0.3));
+  animation: seaweedSway 12s ease-in-out infinite reverse;
 }
 
 .compSci {
@@ -131,7 +261,70 @@ background: linear-gradient(0deg, rgba(2,0,36,1) 18%, rgba(11,130,207,100) 53%, 
 
 .clickMe {
   position: absolute;
-  left:-10vw;
-  bottom:0px;
+  left: -10vw;
+  bottom: 0px;
   width: 10vw;
+  filter: drop-shadow(0 0 10px rgba(119,248,255,0.4));
+  animation: fishSwim 4s ease-in-out infinite;
 }
+
+@keyframes fishSwim {
+  0%, 100% { transform: translateX(0px) translateY(0px); }
+  50% { transform: translateX(5px) translateY(-3px); }
+}
+
+/* Responsive Design for Underwater Theme */
+@media (max-width: 768px) {
+  .name {
+    font-size: 200%;
+    top: 30px;
+  }
+  
+  .heading {
+    top: 120px;
+    font-size: 150%;
+    transform: translateX(-50%);
+  }
+  
+  .openableProject {
+    margin-left: 5%;
+    margin-right: 5%;
+    flex-direction: column;
+  }
+  
+  .openableProject.right {
+    flex-direction: column-reverse;
+  }
+  
+  .clickMe {
+    left: -15vw;
+    width: 15vw;
+  }
+  
+  .lineLeftRight, .lineRightLeft {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .name {
+    font-size: 150%;
+    top: 20px;
+  }
+  
+  .heading {
+    top: 100px;
+    font-size: 120%;
+    transform: translateX(-50%);
+  }
+  
+  .button {
+    padding: 12px;
+    font-size: 14px;
+  }
+  
+  .content {
+    padding: 12px;
+  }
+}
+
