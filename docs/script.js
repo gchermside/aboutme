@@ -85,19 +85,25 @@ function createFish() {
   
   // Random color variation
   const colorRand = Math.random();
-  if (colorRand < 0.33) {
+  if (colorRand < 0.167) {
     fish.classList.add('orange');
-  } else if (colorRand < 0.66) {
+  } else if (colorRand < 0.333) {
     fish.classList.add('green');
+  } else if (colorRand < 0.5) {
+    fish.classList.add('blue');
+  } else if (colorRand < 0.667) {
+    fish.classList.add('purple');
+  } else if (colorRand < 0.833) {
+    fish.classList.add('yellow');
   }
-  // Default blue if no color class added
+  // Default red if no color class added (remaining ~16.7%)
   
   // Random direction (left-to-right or right-to-left)
   const goingRight = Math.random() > 0.5;
   
-  // Random vertical position (but avoid top where the name/heading are)
-  const minY = 200; // Stay below header area
-  const maxY = window.innerHeight - 100; // Stay above bottom
+  // Random vertical position (can now appear anywhere including top area)
+  const minY = 50; // Allow fish near the top (below the very top edge)
+  const maxY = window.innerHeight - 150; // Stay above bottom (account for larger fish size)
   const randomY = minY + Math.random() * (maxY - minY);
   
   // Slight vertical movement during swim
@@ -111,11 +117,11 @@ function createFish() {
   if (goingRight) {
     startX = -50; // Start off-screen left
     endX = window.innerWidth + 50; // End off-screen right
-    animationName = 'fishSwimHorizontal';
+    animationName = 'fishSwimHorizontal'; // Fish flipped to face right direction
   } else {
     startX = window.innerWidth + 50; // Start off-screen right
     endX = -50; // End off-screen left
-    animationName = 'fishSwimReverse';
+    animationName = 'fishSwimReverse'; // Fish normal orientation to face left direction
   }
   
   // Set CSS custom properties for animation

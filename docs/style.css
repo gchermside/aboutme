@@ -51,72 +51,44 @@ body {
   position: fixed;
   pointer-events: none;
   z-index: -2;
-  opacity: 0.7;
-}
-
-.fish::before {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 12px;
-  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
-  border-radius: 50% 0 50% 50%;
-  box-shadow: 0 0 8px rgba(74,144,226,0.3);
-}
-
-.fish::after {
-  content: '';
-  position: absolute;
-  left: -8px;
-  top: 3px;
-  width: 0;
-  height: 0;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-right: 12px solid #357abd;
   opacity: 0.8;
+  width: 120px;
+  height: 90px;
+  background-image: url('img/gen-red-fish.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 0 8px rgba(255,0,0,0.3));
 }
 
-.fish.small::before {
-  width: 14px;
-  height: 8px;
+.fish.small {
+  width: 84px;
+  height: 63px;
 }
 
-.fish.small::after {
-  left: -6px;
-  top: 2px;
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-  border-right: 8px solid #357abd;
+.fish.large {
+  width: 168px;
+  height: 126px;
 }
 
-.fish.large::before {
-  width: 28px;
-  height: 16px;
+.fish.orange {
+  filter: drop-shadow(0 0 8px rgba(255,140,66,0.3)) hue-rotate(15deg) saturate(1.2);
 }
 
-.fish.large::after {
-  left: -10px;
-  top: 4px;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-right: 16px solid #357abd;
+.fish.green {
+  filter: drop-shadow(0 0 8px rgba(78,205,196,0.3)) hue-rotate(150deg) saturate(0.9);
 }
 
-.fish.orange::before {
-  background: linear-gradient(135deg, #ff8c42 0%, #ff6b1a 100%);
+.fish.blue {
+  filter: drop-shadow(0 0 8px rgba(74,144,226,0.3)) hue-rotate(200deg) saturate(1.1);
 }
 
-.fish.orange::after {
-  border-right-color: #ff6b1a;
+.fish.purple {
+  filter: drop-shadow(0 0 8px rgba(147,112,219,0.3)) hue-rotate(280deg) saturate(1.3);
 }
 
-.fish.green::before {
-  background: linear-gradient(135deg, #4ecdc4 0%, #26a69a 100%);
-}
-
-.fish.green::after {
-  border-right-color: #26a69a;
+.fish.yellow {
+  filter: drop-shadow(0 0 8px rgba(255,223,0,0.3)) hue-rotate(60deg) saturate(1.4) brightness(1.1);
 }
 
 .bubble.small {
@@ -152,32 +124,6 @@ body {
 @keyframes fishSwimHorizontal {
   0% {
     opacity: 0;
-    transform: translateX(var(--start-x)) translateY(var(--start-y)) scaleX(1);
-  }
-  5% {
-    opacity: 0.7;
-  }
-  25% {
-    transform: translateX(calc(var(--start-x) + (var(--end-x) - var(--start-x)) * 0.25)) translateY(calc(var(--start-y) + var(--wave-offset))) scaleX(1);
-  }
-  50% {
-    transform: translateX(calc(var(--start-x) + (var(--end-x) - var(--start-x)) * 0.5)) translateY(var(--start-y)) scaleX(1);
-  }
-  75% {
-    transform: translateX(calc(var(--start-x) + (var(--end-x) - var(--start-x)) * 0.75)) translateY(calc(var(--start-y) - var(--wave-offset))) scaleX(1);
-  }
-  95% {
-    opacity: 0.7;
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(var(--end-x)) translateY(var(--end-y)) scaleX(1);
-  }
-}
-
-@keyframes fishSwimReverse {
-  0% {
-    opacity: 0;
     transform: translateX(var(--start-x)) translateY(var(--start-y)) scaleX(-1);
   }
   5% {
@@ -198,6 +144,32 @@ body {
   100% {
     opacity: 0;
     transform: translateX(var(--end-x)) translateY(var(--end-y)) scaleX(-1);
+  }
+}
+
+@keyframes fishSwimReverse {
+  0% {
+    opacity: 0;
+    transform: translateX(var(--start-x)) translateY(var(--start-y)) scaleX(1);
+  }
+  5% {
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateX(calc(var(--start-x) + (var(--end-x) - var(--start-x)) * 0.25)) translateY(calc(var(--start-y) + var(--wave-offset))) scaleX(1);
+  }
+  50% {
+    transform: translateX(calc(var(--start-x) + (var(--end-x) - var(--start-x)) * 0.5)) translateY(var(--start-y)) scaleX(1);
+  }
+  75% {
+    transform: translateX(calc(var(--start-x) + (var(--end-x) - var(--start-x)) * 0.75)) translateY(calc(var(--start-y) - var(--wave-offset))) scaleX(1);
+  }
+  95% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(var(--end-x)) translateY(var(--end-y)) scaleX(1);
   }
 }
 
@@ -430,30 +402,19 @@ body {
     width: 80%;
   }
   
-  .fish.small::before {
-    width: 10px;
-    height: 6px;
+  .fish {
+    width: 84px;
+    height: 63px;
   }
   
-  .fish.small::after {
-    left: -4px;
-    top: 1px;
-    border-top: 3px solid transparent;
-    border-bottom: 3px solid transparent;
-    border-right: 6px solid #357abd;
+  .fish.small {
+    width: 60px;
+    height: 45px;
   }
   
-  .fish::before {
-    width: 16px;
-    height: 10px;
-  }
-  
-  .fish::after {
-    left: -6px;
-    top: 2px;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-right: 10px solid #357abd;
+  .fish.large {
+    width: 108px;
+    height: 81px;
   }
 }
 
