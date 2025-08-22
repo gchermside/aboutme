@@ -211,7 +211,7 @@ body {
   flex-direction: row;
   align-items: stretch;
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
   filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
   animation: projectFloat 8s ease-in-out infinite;
 }
@@ -235,7 +235,7 @@ body {
   margin-right: auto;
   display: block;
   filter: drop-shadow(0 2px 8px rgba(119,248,255,0.3));
-  animation: seaweedSway 12s ease-in-out infinite;
+  /* animation: seaweedSway 12s ease-in-out infinite; */
 }
 
 @keyframes seaweedSway {
@@ -252,7 +252,7 @@ body {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
   filter: drop-shadow(0 2px 8px rgba(119,248,255,0.3));
-  animation: seaweedSway 12s ease-in-out infinite reverse;
+  /* animation: seaweedSway 12s ease-in-out infinite reverse; */
 }
 
 .compSci {
