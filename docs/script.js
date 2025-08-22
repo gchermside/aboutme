@@ -69,3 +69,94 @@ setInterval(createBubble, 300);
 for (let i = 0; i < 5; i++) {
   setTimeout(createBubble, i * 200);
 } 
+
+// Fish generation system
+function createFish() {
+  const fish = document.createElement('div');
+  fish.className = 'fish';
+  
+  // Random size variation
+  const rand = Math.random();
+  if (rand < 0.3) {
+    fish.classList.add('small');
+  } else if (rand > 0.8) {
+    fish.classList.add('large');
+  }
+  
+  // Random color variation
+  const colorRand = Math.random();
+  if (colorRand < 0.33) {
+    fish.classList.add('orange');
+  } else if (colorRand < 0.66) {
+    fish.classList.add('green');
+  }
+  // Default blue if no color class added
+  
+  // Random direction (left-to-right or right-to-left)
+  const goingRight = Math.random() > 0.5;
+  
+  // Random vertical position (but avoid top where the name/heading are)
+  const minY = 200; // Stay below header area
+  const maxY = window.innerHeight - 100; // Stay above bottom
+  const randomY = minY + Math.random() * (maxY - minY);
+  
+  // Slight vertical movement during swim
+  const verticalDrift = (Math.random() - 0.5) * 60; // -30px to +30px
+  
+  // Wave movement amplitude (up and down during swim)
+  const waveOffset = 15 + Math.random() * 25; // 15-40px wave amplitude
+  
+  let startX, endX, animationName;
+  
+  if (goingRight) {
+    startX = -50; // Start off-screen left
+    endX = window.innerWidth + 50; // End off-screen right
+    animationName = 'fishSwimHorizontal';
+  } else {
+    startX = window.innerWidth + 50; // Start off-screen right
+    endX = -50; // End off-screen left
+    animationName = 'fishSwimReverse';
+  }
+  
+  // Set CSS custom properties for animation
+  fish.style.setProperty('--start-x', startX + 'px');
+  fish.style.setProperty('--end-x', endX + 'px');
+  fish.style.setProperty('--start-y', randomY + 'px');
+  fish.style.setProperty('--end-y', (randomY + verticalDrift) + 'px');
+  fish.style.setProperty('--wave-offset', waveOffset + 'px');
+  
+  // Random swim duration (slower than bubbles)
+  const duration = 8 + Math.random() * 8; // 8-16 seconds
+  fish.style.animation = `${animationName} ${duration}s linear forwards`;
+  
+  // Position fish at starting point
+  fish.style.left = '0px';
+  fish.style.top = '0px';
+  
+  // Add to page
+  document.body.appendChild(fish);
+  
+  // Remove fish after animation completes
+  setTimeout(() => {
+    if (fish.parentNode) {
+      fish.parentNode.removeChild(fish);
+    }
+  }, duration * 1000);
+}
+
+// Generate fish every 4-8 seconds (less frequent than bubbles)
+function scheduleFish() {
+  const nextFishDelay = 4000 + Math.random() * 4000; // 4-8 seconds
+  setTimeout(() => {
+    createFish();
+    scheduleFish(); // Schedule the next fish
+  }, nextFishDelay);
+}
+
+// Start the fish generation
+scheduleFish();
+
+// Generate a few fish immediately with delays
+for (let i = 0; i < 3; i++) {
+  setTimeout(createFish, i * 3000);
+}
