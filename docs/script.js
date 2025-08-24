@@ -166,3 +166,4 @@ scheduleFish();
 for (let i = 0; i < 3; i++) {
   setTimeout(createFish, i * 3000);
 }
+

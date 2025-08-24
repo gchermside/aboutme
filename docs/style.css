@@ -6,6 +6,7 @@
   text-align: center;
   font-size: 350%;
   text-shadow: 0 0 8px rgba(119,248,255,0.2);
+  color: white;
 }
 
 @keyframes gentleFloat {
@@ -174,6 +175,7 @@ body {
 }
 
 
+
   
 .background {
   max-width: 100%;
@@ -189,6 +191,7 @@ body {
   top: 120px;
   font-size: 180%;
   text-shadow: 0 0 6px rgba(119,248,255,0.15);
+  color: white;
 }
 
 
@@ -199,7 +202,7 @@ body {
 
 
 .topText {
-  color:#00656b;
+  color: white;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   filter: drop-shadow(0 0 3px rgba(119,248,255,0.15));
 }
@@ -296,6 +299,155 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Education Section Styling */
+.education-section {
+  margin: 0px auto 40px auto;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.education-item {
+  background: linear-gradient(135deg, #defdff 0%, #b3f0f5 100%);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 
+    0 8px 25px rgba(119,248,255,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+  border: 1px solid rgba(119,248,255,0.3);
+  backdrop-filter: blur(5px);
+  animation: projectFloat 8s ease-in-out infinite;
+}
+
+.school-name {
+  color: #00656b;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 28px;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(119,248,255,0.3);
+  text-align: center;
+}
+
+.graduation-date, .major {
+  color: #00656b;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 16px;
+  margin-bottom: 8px;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(119,248,255,0.2);
+}
+
+.courses-heading {
+  color: #00656b;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  text-shadow: 0 1px 3px rgba(119,248,255,0.2);
+}
+
+.courses-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.courses-list li {
+  color: #00656b;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-bottom: 5px;
+  text-shadow: 0 1px 2px rgba(119,248,255,0.15);
+}
+
+.projects-heading {
+  text-align: center;
+  font-size: 180%;
+  text-shadow: 0 0 6px rgba(119,248,255,0.15);
+  margin-top: 40px;
+  margin-bottom: 20px;
+  position: relative;
+  color: white;
+}
+
+/* Education Section Heading */
+.education-heading {
+  text-align: center;
+  font-size: 180%;
+  text-shadow: 0 0 6px rgba(119,248,255,0.15);
+  margin-top: 60px;
+  margin-bottom: 20px;
+  position: relative;
+  color: white;
+}
+
+/* Contact Section Styling */
+.contact-heading {
+  text-align: center;
+  font-size: 180%;
+  text-shadow: 0 0 6px rgba(119,248,255,0.15);
+  margin-top: 60px;
+  margin-bottom: 20px;
+  position: relative;
+  color: white;
+}
+
+.contact-section {
+  margin: 20px auto 60px auto;
+  max-width: 600px;
+  padding: 20px;
+  text-align: center;
+}
+
+.contact-item {
+  background: linear-gradient(135deg, #defdff 0%, #b3f0f5 100%);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 
+    0 8px 25px rgba(119,248,255,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+  border: 1px solid rgba(119,248,255,0.3);
+  backdrop-filter: blur(5px);
+  animation: projectFloat 8s ease-in-out infinite;
+}
+
+.contact-label {
+  color: #00656b;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 20px;
+  margin-bottom: 15px;
+  text-shadow: 0 1px 3px rgba(119,248,255,0.2);
+}
+
+.contact-email {
+  color: #007f8a;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 18px;
+  text-decoration: none;
+  border-bottom: 1px dotted #007f8a;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 3px rgba(119,248,255,0.2);
+}
+
+.contact-email:hover {
+  color: #00a8b5;
+  border-bottom: 1px solid #00a8b5;
+  text-shadow: 0 0 8px rgba(0,168,181,0.4);
+}
+
+/* Section Divider Styling */
+.section-divider {
+  width: 80%;
+  margin: 20px auto;
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(119,248,255,0.6) 20%, 
+    rgba(119,248,255,0.8) 50%, 
+    rgba(119,248,255,0.6) 80%, 
+    transparent 100%);
+  box-shadow: 0 0 10px rgba(119,248,255,0.3);
 } 
 
 .headingContainter {
@@ -416,6 +568,55 @@ body {
     width: 108px;
     height: 81px;
   }
+  
+  .education-section {
+    margin: 0px auto 40px auto;
+    padding: 15px;
+  }
+  
+  .education-item {
+    padding: 20px;
+  }
+  
+  .school-name {
+    font-size: 24px;
+  }
+  
+  .courses-heading {
+    font-size: 18px;
+  }
+  
+  .education-heading {
+    font-size: 150%;
+    margin-top: 40px;
+  }
+  
+  .projects-heading {
+    font-size: 150%;
+    margin-top: 30px;
+  }
+  
+  .contact-heading {
+    font-size: 150%;
+    margin-top: 40px;
+  }
+  
+  .contact-section {
+    margin: 15px auto 40px auto;
+    padding: 15px;
+  }
+  
+  .contact-item {
+    padding: 20px;
+  }
+  
+  .contact-label {
+    font-size: 18px;
+  }
+  
+  .contact-email {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -437,6 +638,59 @@ body {
   
   .content {
     padding: 12px;
+  }
+  
+  .education-section {
+    margin: 0px auto 30px auto;
+    padding: 10px;
+  }
+  
+  .education-item {
+    padding: 15px;
+  }
+  
+  .school-name {
+    font-size: 20px;
+  }
+  
+  .courses-heading {
+    font-size: 16px;
+  }
+  
+  .graduation-date, .major {
+    font-size: 14px;
+  }
+  
+  .education-heading {
+    font-size: 120%;
+    margin-top: 30px;
+  }
+  
+  .projects-heading {
+    font-size: 120%;
+    margin-top: 25px;
+  }
+  
+  .contact-heading {
+    font-size: 120%;
+    margin-top: 30px;
+  }
+  
+  .contact-section {
+    margin: 10px auto 30px auto;
+    padding: 10px;
+  }
+  
+  .contact-item {
+    padding: 15px;
+  }
+  
+  .contact-label {
+    font-size: 16px;
+  }
+  
+  .contact-email {
+    font-size: 14px;
   }
 }
 

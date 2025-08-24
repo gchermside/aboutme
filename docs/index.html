@@ -12,7 +12,28 @@
       <div id="canvasHolder">
         <canvas id="canvas" class="canvasLook"></canvas> 
       </div>
-      <h1 class="heading topText">Projects</h1>
+      
+      <h1 class="education-heading topText">Education</h1>
+      <hr class="section-divider">
+      <div class="education-section">
+        <div class="education-item">
+          <h3 class="school-name">Brown University</h3>
+          <p class="graduation-date">Expected Graduation: June 2028</p>
+          <p class="major">Intended Major: Computational Biology</p>
+          
+          <h4 class="courses-heading">Relevant Coursework:</h4>
+          <ul class="courses-list">
+            <li>Accelerated Introduction to Computer Science (Pyret)</li>
+            <li>Introduction to AI (Python)</li>
+            <li>Machine Learning (Python)</li>
+            <li>Statistical Inference I</li>
+            <li>Linear Algebra</li>
+          </ul>
+        </div>
+        
+        <h1 class="projects-heading topText">Projects</h1>
+        <hr class="section-divider">
+      </div>
       <div class="openableProject">
         <img src="img/clickMe.png" alt="clickMe" class="clickMe">
         <button type="button" class="button">
@@ -36,8 +57,6 @@
           <div class="headingContainter">
             <h3 class="projectText">ASL Dictionary</h3>
             <h4 class="projectText">Language Used: Python, HTML, CSS, Javascript</h4>
-            <h4 class="projectText">You can view it at: </h4>
-            <a class="projectText" href="https://www.asldictionary.org">https://www.asldictionary.org</a>
           </div>
         </button>
       </div>
@@ -58,17 +77,8 @@
       <img src="img/curvedLine.png" alt="curvedLine" class="lineLeftRight">
       <div class="openableProject right">
         <div class="content">
-          <p>I did an independent study on machine learning and completed the HavardX: CS50's Introduction to Artificial Intelligence with Python course. I created many projects, including a tic-tac-toe playing AI, a crossword puzzle maker, and a seven degrees from kevin bacon game.</p>
+          <p>This game gives the user 24-cards in one of three sizes. For each card, the user must find a solution using the four numbers provided that when added, multiplied, subtracted, or divided makes 24. If the user cannot come up with the solution, the program can also tell them the answer. To build this I created three programs, one that makes valid 24-cards, one that finds solutions to a given card, and one that combines them all to allow users to play the game.</p>
         </div>
-        <button type="button" class="button">
-          <div class="headingContainter">
-            <h3 class="projectText">Independent Study in Artificial Intelligence</h3>
-            <h4 class="projectText">Language Used: Python</h4>
-          </div>
-        </button>
-      </div>
-      <img src="img/curvedLine.png" alt="curvedLine" class="lineRightLeft">
-      <div class="openableProject">
         <button type="button" class="button">
           <div class="headingContainter">
             <h3 class="projectText">24 Game</h3>
@@ -77,15 +87,9 @@
             <a class="projectText" href="https://replit.com/@gchermside/24-card-player">https://replit.com/@gchermside/24-card-player</a>
           </div>
         </button>
-        <div class="content">
-          <p>This game gives the user 24-cards in one of three sizes. For each card, the user must find a solution using the four numbers provided that when added, multiplied, subtracted, or divided makes 24. If the user cannot come up with the solution, the program can also tell them the answer. To build this I created three programs, one that makes valid 24-cards, one that finds solutions to a given card, and one that combines them all to allow users to play the game.</p>
-        </div> 
       </div>
-      <img src="img/curvedLine.png" alt="curvedLine" class="lineLeftRight">
-      <div class="openableProject right">
-        <div class="content">
-          <p>This is a program where you can play a 20-questions like game with characters from Harry Potter. Think of a character, and the program will ask you yes or no questions till it can guess the character you're thinking of. If the program guesses wrong, it will ask for your character and a question to differentiate that character with the incorrect guess. This is will be saved so the program can guess the character in future games.</p>
-        </div> 
+      <img src="img/curvedLine.png" alt="curvedLine" class="lineRightLeft">
+      <div class="openableProject">
         <button type="button" class="button">
           <div class="headingContainter">
             <h3 class="projectText">Harry Potter 20 Questions</h3>
@@ -94,9 +98,15 @@
             <a class="projectText" href="https://replit.com/@gchermside/Harry-Potter-Quesions">https://replit.com/@gchermside/Harry-Potter-Quesions</a>
           </div>
         </button>
+        <div class="content">
+          <p>This is a program where you can play a 20-questions like game with characters from Harry Potter. Think of a character, and the program will ask you yes or no questions till it can guess the character you're thinking of. If the program guesses wrong, it will ask for your character and a question to differentiate that character with the incorrect guess. This is will be saved so the program can guess the character in future games.</p>
+        </div> 
       </div>
-      <img src="img/curvedLine.png" alt="curvedLine" class="lineRightLeft">
-      <div class="openableProject">
+      <img src="img/curvedLine.png" alt="curvedLine" class="lineLeftRight">
+      <div class="openableProject right">
+        <div class="content">
+          <p>With this program, the user gets to find as many words as they can in a word scramble, repeat letters allowed. At the end of the game, the program will provide all possible words that could be made from that scramble. I created this to solve the New York Times Spelling Bee Puzzle.</p>
+        </div>
         <button type="button" class="button">
           <div class="headingContainter">
             <h3 class="projectText">Spelling Bee Solver</h3>
@@ -105,15 +115,9 @@
             <a class="projectText" href="https://replit.com/@gchermside/Spelling-Bee">https://replit.com/@gchermside/Spelling-Bee</a>
           </div>
         </button>
-        <div class="content">
-          <p>With this program, the user gets to find as many words as they can in a word scramble, repeat letters allowed. At the end of the game, the program will provide all possible words that could be made from that scramble. I created this to solve the New York Times Spelling Bee Puzzle.</p>
-        </div> 
       </div>
-      <img src="img/curvedLine.png" alt="curvedLine" class="lineLeftRight">
-      <div class="openableProject right">
-        <div class="content">
-          <p>This is a pass and play version of the party game Codenames. In the game, a 5-by-5 grid of words are put out. There are two teams,  red and blue, and each team has a codemaster. The codemasters know which words are sectretly their words, and they must give one word clues to make the user guess their color words. This website lets users, on one laptop, play this game.</p>
-        </div>
+      <img src="img/curvedLine.png" alt="curvedLine" class="lineRightLeft">
+      <div class="openableProject">
         <button type="button" class="button">
           <div class="headingContainter">
             <h3 class="projectText">Codenames</h3>
@@ -122,6 +126,21 @@
             <a class="projectText" href="https://www.mcherm.com/apps/codenames/">https://www.mcherm.com/apps/codenames/</a>
           </div>
         </button>
+        <div class="content">
+          <p>This is a pass and play version of the party game Codenames. In the game, a 5-by-5 grid of words are put out. There are two teams,  red and blue, and each team has a codemaster. The codemasters know which words are sectretly their words, and they must give one word clues to make the user guess their color words. This website lets users, on one laptop, play this game.</p>
+        </div>
+      </div>
+      
+      <h1 class="contact-heading topText">Contact</h1>
+      <hr class="section-divider">
+      <div class="contact-section">
+        <div class="contact-item">
+          <h4 class="contact-label">Email:</h4>
+          <a href="mailto:genevieve_chermside@brown.edu" class="contact-email">genevieve_chermside@brown.edu</a>
+          
+          <h4 class="contact-label">LinkedIn:</h4>
+          <a href="https://www.linkedin.com/in/genevieve-chermside" target="_blank" class="contact-email">linkedin.com/in/genevieve-chermside</a>
+        </div>
       </div>
     </div>
     <script src="script.js"></script>
