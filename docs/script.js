@@ -85,18 +85,16 @@ function createFish() {
   
   // Random color variation
   const colorRand = Math.random();
-  if (colorRand < 0.167) {
+  if (colorRand < 0.2) {
     fish.classList.add('orange');
-  } else if (colorRand < 0.333) {
+  } else if (colorRand < 0.4) {
     fish.classList.add('green');
-  } else if (colorRand < 0.5) {
+  } else if (colorRand < 0.6) {
     fish.classList.add('blue');
-  } else if (colorRand < 0.667) {
+  } else if (colorRand < 0.8) {
     fish.classList.add('purple');
-  } else if (colorRand < 0.833) {
-    fish.classList.add('yellow');
   }
-  // Default red if no color class added (remaining ~16.7%)
+  // Default red if no color class added (remaining 20%)
   
   // Random direction (left-to-right or right-to-left)
   const goingRight = Math.random() > 0.5;
@@ -165,5 +163,103 @@ scheduleFish();
 // Generate a few fish immediately with delays
 for (let i = 0; i < 3; i++) {
   setTimeout(createFish, i * 3000);
+}
+
+// Jellyfish generation system
+function createJellyfish() {
+  const jellyfish = document.createElement('div');
+  jellyfish.className = 'jellyfish';
+  
+  // Random size variation
+  const rand = Math.random();
+  if (rand < 0.4) {
+    jellyfish.classList.add('small');
+  } else if (rand > 0.7) {
+    jellyfish.classList.add('large');
+  }
+  
+  // Random color variation using hue rotation
+  const colorRand = Math.random();
+  if (colorRand < 0.25) {
+    jellyfish.classList.add('blue');
+  } else if (colorRand < 0.5) {
+    jellyfish.classList.add('pink');
+  } else if (colorRand < 0.75) {
+    jellyfish.classList.add('green');
+  } else {
+    jellyfish.classList.add('purple');
+  }
+  
+  // Random direction (left-to-right or right-to-left)
+  const goingRight = Math.random() > 0.5;
+  
+  // Random vertical position (prefer middle to bottom areas)
+  const minY = window.innerHeight * 0.2; // Start from 20% down the screen
+  const maxY = window.innerHeight - 200; // Stay well above bottom
+  const randomY = minY + Math.random() * (maxY - minY);
+  
+  // More vertical drift during swim
+  const verticalDrift = (Math.random() - 0.5) * 80; // -40px to +40px
+  
+  // More pronounced wave movement (jellyfish float more gracefully)
+  const waveOffset = 40 + Math.random() * 50; // 40-90px wave amplitude
+  
+  let startX, endX;
+  
+  if (goingRight) {
+    startX = -150; // Start off-screen left
+    endX = window.innerWidth + 150; // End off-screen right
+  } else {
+    startX = window.innerWidth + 150; // Start off-screen right
+    endX = -150; // End off-screen left
+  }
+  
+  // Set CSS custom properties for animation
+  jellyfish.style.setProperty('--start-x', startX + 'px');
+  jellyfish.style.setProperty('--end-x', endX + 'px');
+  jellyfish.style.setProperty('--start-y', randomY + 'px');
+  jellyfish.style.setProperty('--end-y', (randomY + verticalDrift) + 'px');
+  jellyfish.style.setProperty('--wave-offset', waveOffset + 'px');
+  
+  // Even slower, more graceful movement than fish
+  const duration = 18 + Math.random() * 15; // 18-33 seconds
+  
+  // Use different animation based on direction
+  if (goingRight) {
+    jellyfish.style.animation = `jellyfishFloatFlipped ${duration}s ease-in-out forwards`;
+  } else {
+    jellyfish.style.animation = `jellyfishFloat ${duration}s ease-in-out forwards`;
+  }
+  
+  // Position jellyfish at starting point
+  jellyfish.style.left = '0px';
+  jellyfish.style.top = '0px';
+  
+  // Add to page
+  document.body.appendChild(jellyfish);
+  
+  // Remove jellyfish after animation completes
+  setTimeout(() => {
+    if (jellyfish.parentNode) {
+      jellyfish.parentNode.removeChild(jellyfish);
+    }
+  }, duration * 1000);
+}
+
+// Generate jellyfish every 8-15 seconds (less frequent than fish)
+function scheduleJellyfish() {
+  const nextJellyfishDelay = 8000 + Math.random() * 7000; // 8-15 seconds
+  setTimeout(() => {
+    createJellyfish();
+    scheduleJellyfish(); // Schedule the next jellyfish
+  }, nextJellyfishDelay);
+}
+
+// Start the jellyfish generation
+scheduleJellyfish();
+
+// Generate a few jellyfish immediately with delays
+for (let i = 0; i < 2; i++) {
+  setTimeout(createJellyfish, i * 6000 + 3000); // Start after 3 seconds, then every 6 seconds
 }
 

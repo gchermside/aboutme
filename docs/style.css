@@ -77,7 +77,7 @@ body {
 }
 
 .fish.green {
-  filter: drop-shadow(0 0 8px rgba(78,205,196,0.3)) hue-rotate(150deg) saturate(0.9);
+  filter: drop-shadow(0 0 8px rgba(144,238,144,0.4)) hue-rotate(120deg) saturate(0.8) brightness(1.2);
 }
 
 .fish.blue {
@@ -171,6 +171,103 @@ body {
   100% {
     opacity: 0;
     transform: translateX(var(--end-x)) translateY(var(--end-y)) scaleX(1);
+  }
+}
+
+/* Jellyfish styling for swimming jellyfish background animations */
+.jellyfish {
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.7;
+  width: 120px;
+  height: 150px;
+  background-image: url('img/jellyfish.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 0 12px rgba(147, 112, 219, 0.4));
+}
+
+.jellyfish.small {
+  width: 90px;
+  height: 112px;
+}
+
+.jellyfish.large {
+  width: 150px;
+  height: 187px;
+}
+
+.jellyfish.blue {
+  filter: drop-shadow(0 0 12px rgba(74, 144, 226, 0.4)) hue-rotate(200deg) saturate(1.1);
+}
+
+.jellyfish.pink {
+  filter: drop-shadow(0 0 12px rgba(255, 182, 193, 0.4)) hue-rotate(320deg) saturate(1.2);
+}
+
+.jellyfish.green {
+  filter: drop-shadow(0 0 12px rgba(144, 238, 144, 0.4)) hue-rotate(120deg) saturate(0.8) brightness(1.2);
+}
+
+.jellyfish.purple {
+  filter: drop-shadow(0 0 12px rgba(147, 112, 219, 0.4));
+}
+
+@keyframes jellyfishFloat {
+  0% {
+    opacity: 0;
+    transform: translateX(var(--start-x)) translateY(var(--start-y)) rotate(0deg);
+  }
+  10% {
+    opacity: 0.7;
+    transform: translateX(calc(var(--start-x) + (var(--end-x) - var(--start-x)) * 0.1)) translateY(calc(var(--start-y) + var(--wave-offset) * 0.3)) rotate(8deg);
+  }
+  25% {
+    transform: translateX(calc(var(--start-x) + (var(--end-x) - var(--start-x)) * 0.25)) translateY(calc(var(--start-y) + var(--wave-offset) * 0.8)) rotate(-5deg);
+  }
+  50% {
+    transform: translateX(calc(var(--start-x) + (var(--end-x) - var(--start-x)) * 0.5)) translateY(calc(var(--start-y) - var(--wave-offset))) rotate(12deg);
+  }
+  75% {
+    transform: translateX(calc(var(--start-x) + (var(--end-x) - var(--start-x)) * 0.75)) translateY(calc(var(--start-y) + var(--wave-offset) * 0.5)) rotate(-7deg);
+  }
+  90% {
+    opacity: 0.7;
+    transform: translateX(calc(var(--start-x) + (var(--end-x) - var(--start-x)) * 0.9)) translateY(calc(var(--start-y) - var(--wave-offset) * 0.7)) rotate(3deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(var(--end-x)) translateY(var(--end-y)) rotate(0deg);
+  }
+}
+
+@keyframes jellyfishFloatFlipped {
+  0% {
+    opacity: 0;
+    transform: translateX(var(--start-x)) translateY(var(--start-y)) rotate(0deg) scaleX(-1);
+  }
+  10% {
+    opacity: 0.7;
+    transform: translateX(calc(var(--start-x) + (var(--end-x) - var(--start-x)) * 0.1)) translateY(calc(var(--start-y) + var(--wave-offset) * 0.3)) rotate(8deg) scaleX(-1);
+  }
+  25% {
+    transform: translateX(calc(var(--start-x) + (var(--end-x) - var(--start-x)) * 0.25)) translateY(calc(var(--start-y) + var(--wave-offset) * 0.8)) rotate(-5deg) scaleX(-1);
+  }
+  50% {
+    transform: translateX(calc(var(--start-x) + (var(--end-x) - var(--start-x)) * 0.5)) translateY(calc(var(--start-y) - var(--wave-offset))) rotate(12deg) scaleX(-1);
+  }
+  75% {
+    transform: translateX(calc(var(--start-x) + (var(--end-x) - var(--start-x)) * 0.75)) translateY(calc(var(--start-y) + var(--wave-offset) * 0.5)) rotate(-7deg) scaleX(-1);
+  }
+  90% {
+    opacity: 0.7;
+    transform: translateX(calc(var(--start-x) + (var(--end-x) - var(--start-x)) * 0.9)) translateY(calc(var(--start-y) - var(--wave-offset) * 0.7)) rotate(3deg) scaleX(-1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(var(--end-x)) translateY(var(--end-y)) rotate(0deg) scaleX(-1);
   }
 }
 
@@ -313,7 +410,7 @@ body {
 }
 
 .about-section {
-  margin: 10px auto 40px auto;
+  margin: 10px auto 20px auto;
   max-width: 800px;
   padding: 20px;
   text-align: center;
@@ -414,7 +511,7 @@ body {
   text-align: center;
   font-size: 180%;
   text-shadow: 0 0 6px rgba(119,248,255,0.15);
-  margin-top: 60px;
+  margin-top: 20px;
   margin-bottom: 20px;
   position: relative;
   color: white;
@@ -614,7 +711,7 @@ body {
   }
   
   .about-section {
-    margin: 10px auto 40px auto;
+    margin: 10px auto 20px auto;
     padding: 15px;
   }
   
@@ -645,7 +742,7 @@ body {
   
   .education-heading {
     font-size: 150%;
-    margin-top: 40px;
+    margin-top: 20px;
   }
   
   .projects-heading {
@@ -703,7 +800,7 @@ body {
   }
   
   .about-section {
-    margin: 5px auto 30px auto;
+    margin: 5px auto 15px auto;
     padding: 10px;
   }
   
@@ -738,7 +835,7 @@ body {
   
   .education-heading {
     font-size: 120%;
-    margin-top: 30px;
+    margin-top: 15px;
   }
   
   .projects-heading {
