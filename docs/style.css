@@ -215,6 +215,79 @@ body {
   filter: drop-shadow(0 0 12px rgba(147, 112, 219, 0.4));
 }
 
+@keyframes jellyfishFrames {
+  0%, 49% {
+    background-image: url('img/jellyfish.png');
+  }
+  50%, 100% {
+    background-image: url('img/jellyfish_all_tent.png');
+  }
+}
+
+/* Seaweed styling for bottom anchored seaweed */
+.seaweed {
+  position: fixed;
+  bottom: 50px;
+  width: 40px;
+  height: 120px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  pointer-events: none;
+  z-index: -2;
+  filter: brightness(0.8) hue-rotate(60deg); /* Base green tint */
+}
+
+.seaweed.small {
+  width: 30px;
+  height: 90px;
+}
+
+.seaweed.large {
+  width: 50px;
+  height: 150px;
+}
+
+/* Green color variations */
+.seaweed.light-green {
+  filter: brightness(1.1) hue-rotate(80deg) saturate(1.2);
+}
+
+.seaweed.medium-green {
+  filter: brightness(0.9) hue-rotate(60deg) saturate(1.0);
+}
+
+.seaweed.dark-green {
+  filter: brightness(0.7) hue-rotate(40deg) saturate(1.3);
+}
+
+.seaweed.forest-green {
+  filter: brightness(0.6) hue-rotate(50deg) saturate(1.4);
+}
+
+/* Seaweed animation cycling through 3 frames */
+@keyframes seaweedFrames {
+  0%, 33% {
+    background-image: url('img/seaweed1.png');
+  }
+  34%, 66% {
+    background-image: url('img/seaweed2.png');
+  }
+  67%, 100% {
+    background-image: url('img/seaweed3.png');
+  }
+}
+
+/* Gentle swaying animation */
+@keyframes seaweedSway {
+  0%, 100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
 @keyframes jellyfishFloat {
   0% {
     opacity: 0;

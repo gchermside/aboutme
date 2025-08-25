@@ -198,8 +198,8 @@ function createJellyfish() {
   const maxY = window.innerHeight - 200; // Stay well above bottom
   const randomY = minY + Math.random() * (maxY - minY);
   
-  // More vertical drift during swim
-  const verticalDrift = (Math.random() - 0.5) * 80; // -40px to +40px
+  // Upward movement only (jellyfish propelling themselves)
+  const verticalDrift = -Math.random() * 60; // 0px to -60px (upward only)
   
   // More pronounced wave movement (jellyfish float more gracefully)
   const waveOffset = 40 + Math.random() * 50; // 40-90px wave amplitude
@@ -224,11 +224,11 @@ function createJellyfish() {
   // Even slower, more graceful movement than fish
   const duration = 18 + Math.random() * 15; // 18-33 seconds
   
-  // Use different animation based on direction
+  // Use different animation based on direction, combining with frame animation
   if (goingRight) {
-    jellyfish.style.animation = `jellyfishFloatFlipped ${duration}s ease-in-out forwards`;
+    jellyfish.style.animation = `jellyfishFloatFlipped ${duration}s ease-in-out forwards, jellyfishFrames 2s infinite steps(2)`;
   } else {
-    jellyfish.style.animation = `jellyfishFloat ${duration}s ease-in-out forwards`;
+    jellyfish.style.animation = `jellyfishFloat ${duration}s ease-in-out forwards, jellyfishFrames 2s infinite steps(2)`;
   }
   
   // Position jellyfish at starting point
@@ -262,4 +262,70 @@ scheduleJellyfish();
 for (let i = 0; i < 2; i++) {
   setTimeout(createJellyfish, i * 6000 + 3000); // Start after 3 seconds, then every 6 seconds
 }
+
+// Seaweed generation system
+function createSeaweed() {
+  const seaweed = document.createElement('div');
+  seaweed.className = 'seaweed';
+  
+  // Random size variation
+  const rand = Math.random();
+  if (rand < 0.3) {
+    seaweed.classList.add('small');
+  } else if (rand > 0.7) {
+    seaweed.classList.add('large');
+  }
+  
+  // Random green color variation
+  const colorRand = Math.random();
+  if (colorRand < 0.25) {
+    seaweed.classList.add('light-green');
+  } else if (colorRand < 0.5) {
+    seaweed.classList.add('medium-green');
+  } else if (colorRand < 0.75) {
+    seaweed.classList.add('dark-green');
+  } else {
+    seaweed.classList.add('forest-green');
+  }
+  
+  // Random horizontal position along bottom
+  const randomX = Math.random() * window.innerWidth;
+  seaweed.style.left = randomX + 'px';
+  
+  // Random animation timing for variety
+  const frameDelay = Math.random() * 3; // 0-3 second delay
+  const swayDelay = Math.random() * 4; // 0-4 second delay
+  const swayDuration = 3 + Math.random() * 2; // 3-5 second sway cycle
+  
+  // Apply both frame cycling and swaying animations
+  seaweed.style.animation = `seaweedFrames 3s infinite steps(3) ${frameDelay}s, seaweedSway ${swayDuration}s ease-in-out infinite ${swayDelay}s`;
+  
+  // Add to page
+  document.body.appendChild(seaweed);
+  
+  return seaweed;
+}
+
+// Generate seaweed across the bottom of the page
+function generateSeaweedField() {
+  const seaweedCount = Math.floor(window.innerWidth / 80) + 2; // About every 80px + some extra
+  
+  for (let i = 0; i < seaweedCount; i++) {
+    // Spread creation over a few seconds for natural feel
+    setTimeout(createSeaweed, i * 200);
+  }
+}
+
+// Generate seaweed field on page load
+generateSeaweedField();
+
+// Regenerate seaweed if window is resized
+window.addEventListener('resize', () => {
+  // Remove existing seaweed
+  const existingSeaweed = document.querySelectorAll('.seaweed');
+  existingSeaweed.forEach(seaweed => seaweed.remove());
+  
+  // Generate new field
+  setTimeout(generateSeaweedField, 100);
+});
 
